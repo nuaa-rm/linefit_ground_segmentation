@@ -1,26 +1,16 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.10)
 project(linefit_ground_segmentation)
 
-find_package(catkin_simple 0.1.0 REQUIRED )
+# find_package(catkin_simple 0.1.0 REQUIRED )
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+add_definitions(-std=c++17 -O3)
 
-catkin_simple(ALL_DEPS_REQUIRED)
+find_package(ament_cmake_auto REQUIRED)
 
-add_definitions(-std=c++14)
+ament_auto_find_build_dependencies()
+ament_auto_add_library(${PROJECT_NAME} SHARED DIRECTORY src)
 
-find_package(PCL REQUIRED)
-include_directories(${PCL_INCLUDE_DIRS})
-link_directories(${PCL_LIBRARY_DIRS})
-add_definitions(${PCL_DEFINITIONS})
-
-find_package(Eigen3 REQUIRED)
-include_directories(${Eigen_INCLUDE_DIRS})
-
-cs_add_library(${PROJECT_NAME} src/ground_segmentation.cc src/segment.cc src/bin.cc src/viewer.cc)
-
-#add_doxygen(NOT_AUTOMATIC)
-
-cs_install()
-cs_export()
+ament_auto_package()
 
 #############
 # QTCREATOR #
