@@ -22,6 +22,6 @@ ground_segmentation:
 
     visualize: false            # visualize segmentation result - USE ONLY FOR DEBUGGING
 
-    input_topic: "livox/lidar_PointCloud2"
-    obstacle_output_topic: "segmentation/obstacle"
-    ground_output_topic: "segmentation/ground"
+    input_topic: "/livox/lidar_PointCloud2"
+    obstacle_output_topic: "/segmentation/obstacle"
+    ground_output_topic: "/segmentation/ground"
